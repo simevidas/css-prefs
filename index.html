@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CSS prefs</title>
+
+    <style>
+      html {
+        font-family: system-ui;
+        color: var(--text-color);
+        background: var(--bg-color);
+
+        --text-color: black;
+        --bg-color: white;
+        --link-color: blue;
+        --highlight-color: yellow;
+        --no-support-color: crimson;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        html {
+          --text-color: white;
+          --bg-color: black;
+          --link-color: yellow;
+          --highlight-color: forestgreen;
+          --no-support-color: palevioletred;
+        }
+      }
+
+      @media (min-width: 700px) {
+        html {
+          font-size: 125%;
+        }
+      }
+
+      body {
+        margin: 0;
+      }
+
+      main {
+        padding-inline: 1em;
+        max-width: 32em;
+        margin-inline: auto;
+        margin-top: 2em;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-block: 2em;
+      }
+
+      li {
+        padding-block: 0.5em;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1ch;
+        color: var(--no-support-color);
+      }
+
+      li:not(:first-child) {
+        border-top: 1px solid whitesmoke;
+      }
+
+      b,
+      i {
+        white-space: nowrap;
+        font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas,
+          Liberation Mono, monospace;
+        font-style: normal;
+      }
+
+      b {
+        flex-basis: 100%;
+      }
+
+      @media (min-width: 550px) {
+        b {
+          flex-basis: auto;
+        }
+      }
+
+      b::after {
+        content: ':';
+      }
+
+      footer {
+        position: fixed;
+        top: 0.3ch;
+        right: 0.6ch;
+      }
+
+      a {
+        color: var(--link-color);
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        #prm i:nth-of-type(1) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        #prm i:nth-of-type(2) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-reduced-transparency: no-preference) {
+        #prt i:nth-of-type(1) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-reduced-transparency: reduce) {
+        #prt i:nth-of-type(2) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-contrast: no-preference) {
+        #pc i:nth-of-type(1) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-contrast: less) {
+        #pc i:nth-of-type(2) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-contrast: more) {
+        #pc i:nth-of-type(3) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-contrast: custom) {
+        #pc i:nth-of-type(4) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (forced-colors: none) {
+        #fc i:nth-of-type(1) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (forced-colors: active) {
+        #fc i:nth-of-type(2) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-color-scheme: light) {
+        #pcs i:nth-of-type(1) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        #pcs i:nth-of-type(2) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-reduced-data: no-preference) {
+        #prd i:nth-of-type(1) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-reduced-data: reduce) {
+        #prd i:nth-of-type(2) {
+          background: var(--highlight-color);
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference),
+        (prefers-reduced-motion: reduce) {
+        #prm {
+          color: var(--text-color);
+        }
+      }
+
+      @media (prefers-reduced-transparency: no-preference),
+        (prefers-reduced-transparency: reduce) {
+        #prt {
+          color: var(--text-color);
+        }
+      }
+
+      @media (prefers-contrast: no-preference),
+        (prefers-contrast: less),
+        (prefers-contrast: more),
+        (prefers-contrast: custom) {
+        #pc {
+          color: var(--text-color);
+        }
+      }
+
+      @media (forced-colors: none), (forced-colors: active) {
+        #fc {
+          color: var(--text-color);
+        }
+      }
+
+      @media (prefers-color-scheme: light), (prefers-color-scheme: dark) {
+        #pcs {
+          color: var(--text-color);
+        }
+      }
+
+      @media (prefers-reduced-data: no-preference),
+        (prefers-reduced-data: reduce) {
+        #prd {
+          color: var(--text-color);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>What are my CSS user preferences?</h1>
+
+      <ul>
+        <li id="prm">
+          <b>prefers-reduced-motion</b>
+          <i>no-preference</i>
+          <i>reduce</i>
+        </li>
+        <li id="prt">
+          <b>prefers-reduced-transparency</b>
+          <i>no-preference</i>
+          <i>reduce</i>
+        </li>
+        <li id="pc">
+          <b>prefers-contrast</b>
+          <i>no-preference</i>
+          <i>less</i>
+          <i>more</i>
+          <i>custom</i>
+        </li>
+        <li id="fc">
+          <b>forced-colors</b>
+          <i>none</i>
+          <i>active</i>
+        </li>
+        <li id="pcs">
+          <b>prefers-color-scheme</b>
+          <i>light</i>
+          <i>dark</i>
+        </li>
+        <li id="prd">
+          <b>prefers-reduced-data</b>
+          <i>no-preference</i>
+          <i>reduce</i>
+        </li>
+      </ul>
+
+      <p>
+        <small>
+          <strong>Legend:</strong>
+          <span style="background: var(--highlight-color)">active value</span>,
+          <span style="color: var(--no-support-color)"
+            >not supported in browser</span
+          >
+        </small>
+      </p>
+    </main>
+
+    <footer>
+      <small>
+        <a href="https://simevidas.github.io/css-prefs">GitHub</a>
+      </small>
+    </footer>
+  </body>
+</html>
