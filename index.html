@@ -97,6 +97,25 @@
         padding-bottom: 0.1em;
       }
 
+      i::before,
+      i::after {
+        clip-path: inset(100%);
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+      }
+
+      i:not(b + i)::before {
+        content: ', ';
+      }
+
+      i::after {
+        content: ' is not supported in browser';
+      }
+
       footer {
         position: fixed;
         top: 0.3ch;
@@ -112,6 +131,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -120,6 +143,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -128,6 +155,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -136,6 +167,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -144,6 +179,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -152,6 +191,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -160,6 +203,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -168,6 +215,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -176,6 +227,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -184,6 +239,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -192,6 +251,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -200,6 +263,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -208,6 +275,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -216,6 +287,10 @@
           background: var(--highlight-color);
           color: var(--bg-color);
           forced-color-adjust: none;
+
+          &::after {
+            content: ' is true';
+          }
         }
       }
 
@@ -223,6 +298,10 @@
         (prefers-reduced-motion: reduce) {
         #prm {
           color: var(--text-color);
+
+          & i::after {
+            content: ' is false';
+          }
         }
       }
 
@@ -230,6 +309,10 @@
         (prefers-reduced-transparency: reduce) {
         #prt {
           color: var(--text-color);
+
+          & i::after {
+            content: ' is false';
+          }
         }
       }
 
@@ -239,18 +322,30 @@
         (prefers-contrast: custom) {
         #pc {
           color: var(--text-color);
+
+          & i::after {
+            content: ' is false';
+          }
         }
       }
 
       @media (forced-colors: none), (forced-colors: active) {
         #fc {
           color: var(--text-color);
+
+          & i::after {
+            content: ' is false';
+          }
         }
       }
 
       @media (prefers-color-scheme: light), (prefers-color-scheme: dark) {
         #pcs {
           color: var(--text-color);
+
+          & i::after {
+            content: ' is false';
+          }
         }
       }
 
@@ -258,6 +353,10 @@
         (prefers-reduced-data: reduce) {
         #prd {
           color: var(--text-color);
+
+          & i::after {
+            content: ' is false';
+          }
         }
       }
 
@@ -311,7 +410,7 @@
         </li>
       </ul>
 
-      <p>
+      <p aria-hidden="true">
         <small>
           <strong>Legend:</strong>
           <span
