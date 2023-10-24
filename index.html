@@ -14,7 +14,7 @@
         --text-color: black;
         --bg-color: white;
         --link-color: blue;
-        --highlight-color: yellow;
+        --highlight-color: royalblue;
         --no-support-color: crimson;
         --separator-color: whitesmoke;
       }
@@ -24,7 +24,7 @@
           --text-color: white;
           --bg-color: black;
           --link-color: yellow;
-          --highlight-color: blue;
+          --highlight-color: yellow;
           --no-support-color: palevioletred;
           --separator-color: dimgray;
         }
@@ -58,7 +58,7 @@
       }
 
       li {
-        padding-block: 0.5em;
+        padding-block: 0.45em 0.5em;
         display: flex;
         flex-wrap: wrap;
         gap: calc(1ch - 0.3em);
@@ -94,6 +94,7 @@
 
       i {
         padding-inline: 0.15em;
+        padding-bottom: 0.1em;
       }
 
       footer {
@@ -109,98 +110,112 @@
       @media (prefers-reduced-motion: no-preference) {
         #prm i:nth-of-type(1) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-reduced-motion: reduce) {
         #prm i:nth-of-type(2) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-reduced-transparency: no-preference) {
         #prt i:nth-of-type(1) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-reduced-transparency: reduce) {
         #prt i:nth-of-type(2) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-contrast: no-preference) {
         #pc i:nth-of-type(1) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-contrast: less) {
         #pc i:nth-of-type(2) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-contrast: more) {
         #pc i:nth-of-type(3) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-contrast: custom) {
         #pc i:nth-of-type(4) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (forced-colors: none) {
         #fc i:nth-of-type(1) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (forced-colors: active) {
         #fc i:nth-of-type(2) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-color-scheme: light) {
         #pcs i:nth-of-type(1) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-color-scheme: dark) {
         #pcs i:nth-of-type(2) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-reduced-data: no-preference) {
         #prd i:nth-of-type(1) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
       @media (prefers-reduced-data: reduce) {
         #prd i:nth-of-type(2) {
           background: var(--highlight-color);
-          outline: 0.15em solid var(--text-color);
+          color: var(--bg-color);
+          forced-color-adjust: none;
         }
       }
 
@@ -243,6 +258,16 @@
         (prefers-reduced-data: reduce) {
         #prd {
           color: var(--text-color);
+        }
+      }
+
+      @media (forced-colors: active) {
+        html {
+          --highlight-color: var(--text-color);
+        }
+
+        .forced-colors-hidden {
+          display: none;
         }
       }
     </style>
@@ -289,16 +314,19 @@
       <p>
         <small>
           <strong>Legend:</strong>
-          <span style="color: var(--no-support-color)"
-            >not supported in browser</span
-          >,
           <span
             style="
               background: var(--highlight-color);
-              outline: 0.15em solid var(--text-color);
-              padding-inline: 0.15em;
+              color: var(--bg-color);
+              padding: 0 0.15em 0.1em;
+              forced-color-adjust: none;
             "
             >active value</span
+          ><span class="forced-colors-hidden"
+            >,
+            <span style="color: var(--no-support-color)"
+              >not supported in browser</span
+            ></span
           >
         </small>
       </p>
